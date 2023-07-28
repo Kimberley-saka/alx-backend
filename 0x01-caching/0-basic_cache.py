@@ -11,7 +11,7 @@ class BasicCache(BaseCaching):
     """
 
     def __init__(self):
-        """_summary_
+        """init method
         """
         super().__init__()
 
@@ -19,8 +19,9 @@ class BasicCache(BaseCaching):
         """
         add data to cache
         """
-        if key is not None or item is not None:
-            self.cache_data.update({key: item})
+        if key is None or item is None:
+            pass
+        self.cache_data.update({key: item})
 
     def get(self, key):
         """
