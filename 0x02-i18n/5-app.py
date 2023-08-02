@@ -28,6 +28,24 @@ users = {
 }
 
 
+def get_user():
+    """find user
+    """
+    login_id = request.args.get('login_as')
+    if login_id:
+        return users.get(int(login_id))
+    return None
+
+
+@app.before_request
+def before_request() -> None:
+    """
+    before_request
+    """
+    user = get_user()
+    g.user = user
+
+
 @babel.localeselector
 def get_locale():
     """
@@ -46,7 +64,7 @@ def hello_world():
     basic flask app
     """
 
-    return render_template('4-index.html')
+    return render_template('5-index.html')
 
 
 if __name__ == '__main__':
