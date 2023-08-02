@@ -3,7 +3,7 @@
 flask app
 """
 from flask_babel import Babel
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 class config(object):
@@ -20,13 +20,21 @@ app.config.from_object(config)
 babel = Babel(app)
 
 
+@babel.localeselector
+def get_locale():
+    """
+    get locale
+    """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
 @app.route('/')
 def hello_world():
     """
     basic flask app
     """
 
-    return render_template('1-index.html')
+    return render_template('3-index.html')
 
 
 if __name__ == '__main__':
