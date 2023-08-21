@@ -50,6 +50,11 @@ class Server:
             return []
     
     def get_hyper(self, page=1, page_size=10) -> Dict:
+        """
+        hypermedia pagination
+        """
+        assert type(page) is int and page > 0
+        assert type(page_size) is int and page_size > 0
         data_page = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.dataset()) / page_size)
         
