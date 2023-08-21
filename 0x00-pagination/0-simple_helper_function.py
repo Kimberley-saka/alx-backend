@@ -2,9 +2,10 @@
 """
 pagination, dealing with indexes
 """
+from typing import Tuple
 
 
-def index_range(page: int, page_size: int) -> tuple[int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     retirn start index and end index as a tuple
     """
