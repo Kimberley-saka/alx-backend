@@ -48,7 +48,7 @@ class Server:
             return page_data
         except IndexError:
             return []
-    
+
     def get_hyper(self, page=1, page_size=10) -> Dict:
         """
         hypermedia pagination
@@ -57,7 +57,7 @@ class Server:
         assert type(page_size) is int and page_size > 0
         data_page = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.dataset()) / page_size)
-        
+
         next_page = page + 1 if page < total_pages else None
         prev_page = page - 1 if page > 1 else None
 
