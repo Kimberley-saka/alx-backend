@@ -48,7 +48,7 @@ class Server:
 
         indexed_data = self.indexed_dataset()
         total_items = len(indexed_data)
-        
+
         if index >= total_items:
             raise AssertionError("Index out of range")
 
@@ -67,5 +67,4 @@ class Server:
             'data': data_page,
             'page_size': page_size,
             'next_index': next_index
-        }
-      
+            }
