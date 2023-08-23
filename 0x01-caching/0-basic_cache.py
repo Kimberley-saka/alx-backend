@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
 Add items to cache and get item linked to key
 """
 from base_caching import BaseCaching
