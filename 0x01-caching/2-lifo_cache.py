@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-first in first out cache
+Last in first out cache
 """
 from base_caching import BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """
-    first in first out cache
+    Last in first out cache
     """
     def __init__(self):
         """
@@ -17,16 +17,15 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         """
-        add data to cache and / delete it
+        add data to cache and/ delete it
         """
         if key is None or item is None:
             pass
         else:
             size = len(self.cache_data)
             if size >= BaseCaching.MAX_ITEMS:
-                first_key = next(iter(self.cache_data))
-                self.cache_data.pop(first_key)
-                print('DISCARD: {}'.format(first_key))
+                last_item = self.cache_data.popitem()
+                print('DISCARD: {}'.format(last_item[0]))
 
             self.cache_data[key] = item
 
