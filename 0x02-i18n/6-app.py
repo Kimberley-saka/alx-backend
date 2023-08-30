@@ -33,7 +33,7 @@ def hello():
     """
     displays hello world
     """
-    return render_template('5-index.html')
+    return render_template('6-index.html')
 
 
 def get_user():
