@@ -35,6 +35,7 @@ def hello():
     """
     return render_template('5-index.html')
 
+
 def get_user():
     """
     get user
@@ -44,6 +45,7 @@ def get_user():
         return users.get(int(id))
     return None
 
+
 @app.before_request
 def before_reqeust():
     """
@@ -51,6 +53,7 @@ def before_reqeust():
     """
     user = get_user()
     g.user = user
+
 
 @babel.localeselector
 def get_locale():
