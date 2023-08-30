@@ -27,4 +27,8 @@ def hello():
     """
     displays hello world
     """
-    return render_template('0-index.html')
+    return render_template('1-index.html')
+
+
+if __name__ == '__main__':
+    app.run(port="5000", host="0.0.0.0", debug=True)
