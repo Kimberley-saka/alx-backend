@@ -4,7 +4,9 @@ simple flask app
 """
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
-from pytz import timezone, exceptions
+from pytz import timezone, exceptions, utc
+from datetime import datetime
+import locale
 
 
 app = Flask(__name__)
@@ -34,7 +36,7 @@ def hello():
     """
     displays hello world
     """
-    return render_template('7-index.html')
+    return render_template('index.html')
 
 
 def get_user():
@@ -54,6 +56,12 @@ def before_reqeust():
     """
     user = get_user()
     g.user = user
+
+    time_now = utc.localize(datetime.utcnow())
+    time = time_now.astimezone(timezone(get_timezone()))
+    locale.setlocale(locale.LC_TIME, (get_locale(), 'UTF-8'))
+    time_format = "%b %d, %Y %I:%M:%S %p"
+    g.time = time.strftime(time_format)
 
 
 @babel.localeselector
